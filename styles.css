@@ -1,0 +1,46 @@
+.red {
+  background-color: rgb(200, 0, 0);
+  border: 5px solid rgb(200, 0, 0);
+}
+.red:hover {
+  border: 5px solid darkblue;
+}
+.black {
+  background-color: rgb(10, 10, 10);
+  border: 5px solid black;
+}
+.black:hover {
+  border: 5px solid darkblue;
+}
+.bet {
+  text-align: center;
+}
+.bet_field {
+  display: flex;
+  margin: 0 100px;
+  padding: 10;
+  border: 1px solid black;
+}
+.colorBet {
+  opacity: 60%;
+  color: white;
+  padding: 20px 50px;
+  margin: 10px;
+}
+.animation {
+  animation-name: pulse;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
