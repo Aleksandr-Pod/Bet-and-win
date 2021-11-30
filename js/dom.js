@@ -1,17 +1,11 @@
-//            Example - 1
-// const menuItem = document.querySelector(".menu-item1");
-// console.log(menuItem.textContent);
-// menuItem.textContent = "Hello";
-// menuItem.classList.add("greating"); // Добавляем класс "greating"
-// console.log(menuItem.classList); // "menu-item1 greating"
-// menuItem.style.backgroundColor = "teal";
-
 //            Ставка на цвет:
 let colorBet = "";
 const fieldRed = document.querySelector(".red");
 fieldRed.addEventListener('click', betOnRed);
 const fieldBlack = document.querySelector(".black");
 fieldBlack.addEventListener('click', betOnBlack);
+const fieldCancel = document.querySelector(".cancel");
+fieldCancel.addEventListener('click', colorBetCancel);
 
 function betOnRed () {
     colorBet = "red";
@@ -29,4 +23,13 @@ function betOnBlack () {
     fieldBlack.classList.add("animation"); // название класса без точки !
     fieldRed.style.opacity = "60%";
     fieldRed.classList.remove("animation");
+}
+
+function colorBetCancel() {
+    colorBet = "";
+    document.querySelector(".bet").textContent = "Делайте ставку !"
+    fieldBlack.classList.remove("animation");
+    fieldRed.classList.remove("animation");
+    fieldBlack.style.opacity = "60%";
+    fieldRed.style.opacity = "60%";
 }
