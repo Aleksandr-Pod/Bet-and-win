@@ -8,15 +8,36 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <section class="section">
-      <h1 class="bet">Делайте ставку !</h1>
-      <div class="bet_field">
+    <div class="colorBetSection">
+      <h2 class="bet-text">Делайте ставку !</h1>
+      <div class="bet-color-field">
         <div class="red colorBet">Красный</div>
         <div class="black colorBet" class="color">Чёрный</div>
       </div>
       <div class="cancel colorBet">Отмена</div>
-    </section>
-
+    </div>
+    <div class="numberBetSection">
+      <h2 class="numberBet-text">Делайте ставку !</h2>
+      <div class="numberBet-field"></div>
+    </div>
+  <form class="wallet visually-hidden">
+    <p class="wallet-text">На вашем счету:</p>
+    <p class="money">100 денег</p>
+    <p class="wallet-input-text">Введите сумму ставки:</p>
+    <label class="wallet-input-string">
+      <input type="text" class="wallet-input">
+    </label>
+    <p class="betAmount"></p>
+    <div class="confirmation visually-hidden">
+      <button class="bet-confirm">OK</button>
+      <button class="bet-cancel">отмена</button>
+    </div>
+  </form>
+  <!-- <form class="confirm">
+    <label>OK
+      <input type="text">
+    </label>
+  </form> -->
     <script src="./js/dom.js"></script>
   </body>
 </html>

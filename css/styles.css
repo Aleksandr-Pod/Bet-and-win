@@ -1,18 +1,40 @@
-.section {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
+body {
+  background-color: rgb(119, 119, 168);
 }
-.bet {
+h2,
+h3 {
+  margin: 0;
+  padding: 5px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+.colorBetSection,
+.numberBetSection {
+  width: 480px;
+  height: 100%;
+  padding: 0 50px;
+  margin: 0 auto;
+  border: 3px solid black;
+}
+.bet-text,
+.numberBet-text {
   text-align: center;
 }
-.bet_field {
+.bet-color-field {
   display: flex;
   justify-content: center;
-  margin: 0;
+  margin: 0 auto;
   padding: 10;
-  width: 100%;
-  border: 1px solid black;
+  width: 480px;
 }
 .red {
   background-color: rgb(200, 0, 0);
@@ -30,10 +52,39 @@
 }
 
 .colorBet {
-  opacity: 60%;
   color: white;
   padding: 20px 50px;
   margin: 10px;
+}
+
+/*        Number field          */
+.numberBet-field {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 420px;
+  height: 480px;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: green;
+}
+.numberBet {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  padding: 10px;
+  background-color: rgb(78, 78, 78);
+  color: white;
+  font-size: 24px;
+}
+.numberBet:hover,
+.numberBet:focus {
+  background-color: rgb(143, 142, 142);
+}
+.accent {
+  background-color: rgb(143, 142, 142);
+  color: black;
 }
 .cancel {
   display: block;
@@ -44,6 +95,50 @@
   background-color: goldenrod;
   color: rgb(255, 255, 255);
   border: 1px solid black;
+}
+
+.wallet {
+  position: absolute;
+  /* left: 100px;
+  top: 100px; */
+  width: 200px;
+  height: 120px;
+  padding: 10px;
+  text-align: center;
+  background-color: wheat;
+}
+.wallet p {
+  margin: 0;
+}
+.wallet-input {
+  width: 150px;
+  height: 20px;
+}
+.money {
+  padding: 5px;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(212, 127, 0);
+
+  border-bottom: solid 1px black;
+}
+.wallet-input-text {
+  padding: 5px;
+}
+/* .wallet-input-string {
+  display: flex;
+  justify-content: center;
+} */
+.betAmount {
+  padding: 5px;
+  color: rgb(179, 21, 0);
+  font-size: 16px;
+  font-weight: 700;
+}
+.confirmation {
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
 }
 .animation {
   animation-name: pulse;
