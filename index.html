@@ -8,6 +8,21 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
+    <form class="wallet">
+      <p class="wallet-header">На вашем счету:<span class="money">100 денег</span></p>
+      <p class="bet-result"></p>
+
+      <div class="betAmount visually-hidden">
+        <p class="wallet-input-text">Введите сумму ставки:</p>
+          <input type="text" class="wallet-input">
+        
+        <div class="confirmation visually-hidden">
+          <button class="bet-confirm">OK</button>
+          <button class="bet-cancel">отмена</button>
+        </div>
+        <button type="button" class="start visually-hidden">START</button> 
+      </div>
+    </form>
     <div class="colorBetSection">
       <h2 class="bet-text">Делайте ставку !</h1>
       <div class="bet-color-field">
@@ -20,24 +35,12 @@
       <h2 class="numberBet-text">Делайте ставку !</h2>
       <div class="numberBet-field"></div>
     </div>
-  <form class="wallet visually-hidden">
-    <p class="wallet-text">На вашем счету:</p>
-    <p class="money">100 денег</p>
-    <p class="wallet-input-text">Введите сумму ставки:</p>
-    <label class="wallet-input-string">
-      <input type="text" class="wallet-input">
-    </label>
-    <p class="betAmount"></p>
-    <div class="confirmation visually-hidden">
-      <button class="bet-confirm">OK</button>
-      <button class="bet-cancel">отмена</button>
-    </div>
-  </form>
+
   <!-- <form class="confirm">
     <label>OK
       <input type="text">
     </label>
   </form> -->
-    <script src="./js/dom.js"></script>
+    <script src="./js/App.js" type="module"></script>
   </body>
 </html>

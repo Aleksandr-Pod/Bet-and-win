@@ -96,39 +96,36 @@ h3 {
   color: rgb(255, 255, 255);
   border: 1px solid black;
 }
-
+          /* Wallet field */
 .wallet {
-  position: absolute;
-  /* left: 100px;
-  top: 100px; */
-  width: 200px;
+  width: 600px;
   height: 120px;
+  margin: 0 auto;
   padding: 10px;
   text-align: center;
   background-color: wheat;
 }
-.wallet p {
+.wallet-header {
   margin: 0;
+  border-bottom: solid 1px black;
 }
 .wallet-input {
   width: 150px;
   height: 20px;
 }
 .money {
-  padding: 5px;
+  padding-left: 25px;
   font-size: 20px;
   font-weight: 700;
   color: rgb(212, 127, 0);
 
-  border-bottom: solid 1px black;
+
 }
 .wallet-input-text {
   padding: 5px;
+  margin: 0;
 }
-/* .wallet-input-string {
-  display: flex;
-  justify-content: center;
-} */
+
 .betAmount {
   padding: 5px;
   color: rgb(179, 21, 0);
@@ -136,9 +133,11 @@ h3 {
   font-weight: 700;
 }
 .confirmation {
+  width: 120px;
+  margin: 0 auto;
   padding: 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .animation {
   animation-name: pulse;
