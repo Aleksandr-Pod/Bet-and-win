@@ -5,5 +5,6 @@ export const walletRef = {
     input: document.querySelector("input"),
     confirmation: document.querySelector(".confirmation"),
     inputText: document.querySelector(".wallet-input-text"),
-    betResult: document.querySelector(".bet-result")
+    betResult: document.querySelector(".bet-result"),
+    start: document.querySelector(".start")
 }

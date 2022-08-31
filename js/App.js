@@ -3,7 +3,8 @@ import global from './globalData.js';
 import {colorBetRef} from './colorBetRef.js';
 import {numberBetRef} from './numberBetRef.js';
 import {removeAccent} from './removeAccent.js';
-import {numberBetCancel} from './numberBetCancell.js'
+import {numberBetCancel} from './numberBetCancell.js';
+import {colorBetCancel} from './colorBetCancel.js'
 
 global.colorBet = {color: "", amount: 0};
 global.numberBet = [];
@@ -76,13 +77,12 @@ function onNumberBet(evt) {
         numberBetCancel();
         return;
     } else {
-        global.current = {number: (parseInt(evt.target.textContent))};
-        console.log('Global:', global)
+        global.current = {bet: (parseInt(evt.target.textContent))};
         evt.target.classList.add("accent");
-        numberBetRef.text.textContent = `Ставка на число: ${global.current.number}`;
+        numberBetRef.text.textContent = `Ставка на число: ${global.current.bet}`;
         numberBetRef.text.style.backgroundColor = "yellow";
     }
-    colorBetRef.section.removeEventListener('click', onColorBet);
+    // colorBetRef.section.removeEventListener('click', onColorBet);
     makeBetAmount();
     return;
 }
