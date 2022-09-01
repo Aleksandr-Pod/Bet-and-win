@@ -1,19 +1,20 @@
-import {makeBetAmount, closeBetAmount} from './wallet.js';
 import global from './globalData.js';
-import {colorBetRef} from './colorBetRef.js';
-import {numberBetRef} from './numberBetRef.js';
-import {removeAccent} from './removeAccent.js';
-import {numberBetCancel} from './numberBetCancell.js';
-import {colorBetCancel} from './colorBetCancel.js'
+import {colorBetRef, numberBetRef, walletRef} from './refs.js';
+import {makeBetAmount, closeBetAmount} from './wallet.js';
+import {removeAccent} from './numberBetCancel.js';
+import {numberBetCancel} from './numberBetCancel.js';
+import {colorBetCancel} from './colorBetCancel.js';
 
-global.colorBet = {color: "", amount: 0};
-global.numberBet = [];
+// global.colorBet = {bet: "", amount: 0};
+// global.numberBet = [];
 global.money = 100;
 
 colorBetRef.section.addEventListener('click', onColorBet);
 
 export function onColorBet(evt) {
     const color = evt.target.className;
+
+    if (global.colorBet.amount) changeColorBet();
     switch (color) {
         case "red colorBet":
             betOnRed.call(colorBetRef, "red");
@@ -24,6 +25,11 @@ export function onColorBet(evt) {
         default:
             colorBetCancel();
     } // Можно сделать одну функцию обработки ставки!
+}
+function changeColorBet() {
+    console.log("global.colorBet", global.colorBet);
+    walletRef.betMessage.textContent = "Хотите поменять ставку на цвет ?";
+
 }
 
 function betOnRed (colorBetCancel) {
@@ -69,7 +75,7 @@ numberCancel.textContent = "Отменить ставку на число";
 //         Слушаем поле цифр
 numberBetRef.field.addEventListener('click', onNumberBet);
 
-function onNumberBet(evt) {
+export function onNumberBet(evt) {
     if (evt.target.nodeName !== "BUTTON") return;
     removeAccent();
     if (evt.target.classList.contains("n37")) {
@@ -82,7 +88,8 @@ function onNumberBet(evt) {
         numberBetRef.text.textContent = `Ставка на число: ${global.current.bet}`;
         numberBetRef.text.style.backgroundColor = "yellow";
     }
-    // colorBetRef.section.removeEventListener('click', onColorBet);
+    // выбрана ставка на цифру, пока отключим ставку на цвет
+    colorBetRef.section.removeEventListener('click', onColorBet);
     makeBetAmount();
     return;
 }

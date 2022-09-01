@@ -1,8 +1,9 @@
-import {colorBetCancel} from './colorBetCancel.js';
 import global from './globalData.js';
-import { numberBetCancel } from './numberBetCancell.js';
+import { numberBetCancel } from './numberBetCancel.js';
+import {colorBetCancel} from './colorBetCancel.js';
 import start from './process.js';
-import { walletRef } from './walletRef.js';
+import { walletRef } from './refs.js';
+import { addBetListeners, removeBetListeners } from './betListeners.js';
 
 function onWalletSubmit (evt) {
     evt.preventDefault();
@@ -21,7 +22,7 @@ function onWalletSubmit (evt) {
     walletRef.confirmation.addEventListener('click', betAmountConfirm);
     return;
 }
-function betAmountConfirm(evt, bet, amount) {
+function betAmountConfirm(evt) {
     evt.preventDefault();
     if (evt.target.nodeName !== "BUTTON") return;
     if (evt.target.textContent !== "OK") {
@@ -35,21 +36,27 @@ function betAmountConfirm(evt, bet, amount) {
         closeBetAmount();
         return;
     }
-
     global.money -= global.current.amount;
-    let x = "";
-    if (typeof(global.current.bet) === "string") {
-        x = `цвет ${global.current.bet}`;
-        global.colorBet = global.current;
-        console.log("global after", global);
-    } else {
-        x = `число ${global.current.bet}`;
-        global.numberBet.push(global.current);
-        console.log("global after", global);
+    walletRef.money.textContent = `${global.money} монет`;
+
+    // start eventListenet only at first.
+    if (!(global.colorBet.amount || global.numberBet[0]?.amount)) {
+        console.log("start - add listener ..")
+        walletRef.start.addEventListener('click', begin);
     }
 
-    walletRef.money.textContent = `${global.money} монет`;
-  
+    let x = "";
+    const {bet, amount} = global.current;
+    if (typeof(bet) === "string") {
+        x = `цвет ${bet}`;
+        global.colorBet = {bet, amount};
+        console.log("global.colorBet - ", global.colorBet);
+    } else {
+        x = `число ${global.current.bet}`;
+        global.numberBet.push({bet, amount});
+        console.log("global.numberBet - ", global.numberBet);
+    }
+
     walletRef.betResult.insertAdjacentHTML("afterbegin", `<li>Ставка  принята: ${global.current.amount} монет
     на ${x}</li>`);
     hideInput();
@@ -57,19 +64,24 @@ function betAmountConfirm(evt, bet, amount) {
     walletRef.confirmation.removeEventListener('click', betAmountConfirm);
     walletRef.input.classList.remove("visually-hidden");
     walletRef.start.classList.remove("visually-hidden");
-    walletRef.start.addEventListener('click', begin);
+    numberBetCancel();
+    colorBetCancel();
+    closeBetAmount();
 
-    // walletRef.betResult = "";
-    // global.numberBet = [];
-    // global.colorBet = {};
-    // global.current = {};
     return;
 }
 
 const begin = () => {
-    start ();
-    walletRef.start.removeEventListener('click', begin);
+    removeBetListeners();
     walletRef.start.classList.add("visually-hidden");
+    start ();
+    
+    setTimeout(() => {
+        walletRef.betResult.innerHTML = "";
+        walletRef.money.textContent = `${global.money}`;
+        addBetListeners();
+        return;
+    }, 5000);
 }
 
 const hideInput = () => {
@@ -78,8 +90,11 @@ const hideInput = () => {
 }
 
 export const makeBetAmount = () => {
-    walletRef.betAmount.classList.remove("visually-hidden");
-    walletRef.wallet.addEventListener('submit', onWalletSubmit);
+    if (walletRef.betAmount.classList.contains("visually-hidden")) {
+        walletRef.betAmount.classList.remove("visually-hidden");
+        walletRef.wallet.addEventListener('submit', onWalletSubmit);
+        walletRef.input.focus();
+    }
     return;
 }
 
