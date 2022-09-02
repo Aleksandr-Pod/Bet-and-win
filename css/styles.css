@@ -1,4 +1,5 @@
 body {
+  font-size: 20px;
   background-color: rgb(119, 119, 168);
   position: relative;
 }
@@ -52,7 +53,6 @@ p {
 .bet-message {
   font-size: 20px;
   background-color: indianred;
-  border: 1px solid black;
   color: rgb(252, 235, 0);
 }
 .wallet-input {
@@ -205,20 +205,54 @@ p {
   padding: 0 5px;
   color: white;
 }
+.start {
+  padding: 5px 20px;
+  font-size: 20px;
+  background-color: rgb(255, 108, 2);
+  border-radius: 25px;
+}
+.winCalc {
+  width: 90%;
+  margin: 0 auto;
+ text-align: center;
+  background-color: yellow;
+  border-color: orange;
+  border-radius: 10px;
+}
+.winCalc p {
+  animation-name: apear;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: initial;
+}
+/* .winAnimate {
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-iteration-count: initial;
+} */
+
 .animation {
   animation-name: pulse;
   animation-duration: 0.5s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
+  0% {transform: scale(1);}
   50% {
     transform: scale(1.2);
   }
   100% {
     transform: scale(1);
+  }
+}
+@keyframes apear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
   }
 }
