@@ -2,7 +2,7 @@ import global from './globalData.js';
 import { numberBetCancel } from './numberBetCancel.js';
 import {colorBetCancel} from './colorBetCancel.js';
 import start from './process.js';
-import { walletRef } from './refs.js';
+import { walletRef, modalRef } from './refs.js';
 import { addBetListeners, removeBetListeners } from './betListeners.js';
 
 function onWalletSubmit (evt) {
@@ -37,7 +37,7 @@ function betAmountConfirm(evt) {
         return;
     }
     global.money -= global.current.amount;
-    walletRef.money.textContent = `${global.money} монет`;
+    walletRef.money.textContent = `${global.money}`;
 
     // start eventListenet only at first.
     if (!(global.colorBet.amount || global.numberBet[0]?.amount)) {
@@ -50,15 +50,15 @@ function betAmountConfirm(evt) {
     if (typeof(bet) === "string") {
         x = `цвет ${bet}`;
         global.colorBet = {bet, amount};
-        console.log("global.colorBet - ", global.colorBet);
+        walletRef.betColorResult.innerHTML = `Ставка  принята: ${global.current.amount} монет
+        на цвет <span class="${bet}">${bet}</span>`;
     } else {
         x = `число ${global.current.bet}`;
         global.numberBet.push({bet, amount});
-        console.log("global.numberBet - ", global.numberBet);
+        walletRef.betResult.insertAdjacentHTML("afterbegin", `<li>Ставка  принята: ${global.current.amount} монет
+        на число <span class="results-number">${bet}</span></li>`);
     }
 
-    walletRef.betResult.insertAdjacentHTML("afterbegin", `<li>Ставка  принята: ${global.current.amount} монет
-    на ${x}</li>`);
     hideInput();
     walletRef.confirmation.classList.add("visually-hidden");
     walletRef.confirmation.removeEventListener('click', betAmountConfirm);
@@ -67,18 +67,22 @@ function betAmountConfirm(evt) {
     numberBetCancel();
     colorBetCancel();
     closeBetAmount();
-
     return;
 }
 
-const begin = () => {
+const begin = (e) => {
     removeBetListeners();
     walletRef.start.classList.add("visually-hidden");
+    modalRef.layout.classList.remove("visually-hidden");
+    
     start ();
     
     setTimeout(() => {
         walletRef.betResult.innerHTML = "";
+        walletRef.betColorResult.innerHTML = "",
         walletRef.money.textContent = `${global.money}`;
+        walletRef.start.classList.remove("visually-hidden");
+        modalRef.layout.classList.add("visually-hidden");
         addBetListeners();
         return;
     }, 5000);

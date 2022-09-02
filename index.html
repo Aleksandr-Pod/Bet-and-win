@@ -9,7 +9,8 @@
   </head>
   <body>
     <form class="wallet">
-      <p class="wallet-header">На вашем счету:<span class="money">100 </span> монет</p>
+      <p class="wallet-header">На вашем счету: [<span class="money">100 </span>] монет</p>
+      <p class="bet-colorResult"></p>
       <p class="bet-result"></p>
       <p class="bet-message"></p>
       <div class="betAmount visually-hidden">
@@ -35,12 +36,15 @@
       <h2 class="numberBet-text">Делайте ставку !</h2>
       <div class="numberBet-field"></div>
     </div>
-
-  <!-- <form class="confirm">
-    <label>OK
-      <input type="text">
-    </label>
-  </form> -->
-    <script src="./js/App.js" type="module"></script>
+    <div class="layout visually-hidden">
+      <div class="modal">
+        <div class="results">
+          <div class="results-text">Число: <span class="results-number"></span></div>
+          <div class="results-text">Цвет:<span class="results-color"></span></div>
+        </div>
+        <div class="winCalc"></div>
+      </div>
+    </div>
   </body>
+  <script src="./js/App.js" type="module"></script>
 </html>

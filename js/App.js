@@ -28,8 +28,7 @@ export function onColorBet(evt) {
 }
 function changeColorBet() {
     console.log("global.colorBet", global.colorBet);
-    walletRef.betMessage.textContent = "Хотите поменять ставку на цвет ?";
-
+    walletRef.betMessage.textContent = "Cставка на цвет ПОМЕНЯЕТСЯ !";
 }
 
 function betOnRed (colorBetCancel) {
