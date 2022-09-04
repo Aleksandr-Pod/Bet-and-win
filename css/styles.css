@@ -217,21 +217,20 @@ p {
   display: flex;
   justify-content: space-around;
   padding: 5px;
-  border-bottom: 2px solid gray;
 }
-.results-text {
+/* .results-text {
   font-size: 24px;
 }
 .results-number {
   display: inline-block;
   width: 46px;
-  /* padding: 0 10px; */
   background-color: wheat;
   border: 2px solid orange;
-}
+} */
 .results-color {
   padding: 0 5px;
   color: white;
+  font-size: 48px;
 }
 .start {
   padding: 5px 20px;
@@ -253,6 +252,14 @@ p {
   animation-duration: 1s;
   animation-timing-function: linear;
   animation-iteration-count: initial;
+}
+.numberInModal {
+  position: fixed;
+  top: 200px;
+  left: calc((100% - 300px)/2);
+  font-size: 48px;
+  color: white;
+  
 }
 /* .winAnimate {
   animation-name: pulse;

@@ -1,18 +1,12 @@
 import global from './globalData.js';
 import { modalRef } from './refs.js';
 
-export default function start() {
-    const result = Math.floor(Math.random()*37);
-    // const result = 2;
-    modalRef.numRes.textContent = `${result}`;
-    const colorResult = ( result & 1 ) ? "red" : "black";
-    modalRef.colorRes.textContent = `${colorResult}`;
-    modalRef.colorRes.classList.add(`${colorResult}`);
-    global.results = {result, colorResult};
+export default function calcProcess() {
+
     let win = 0;
 // numbers win calculations
     global.numberBet.forEach(el => {
-        if (el.bet === result) {
+        if (el.bet === global.results.result) {
             win =  el.amount*10;
             setTimeout(() => {
                 modalRef.winCalc.insertAdjacentHTML=('afterbegin', `<p>Поздравляем, вы выиграли ${win} монет !!!</p>`);
@@ -22,7 +16,7 @@ export default function start() {
         }
     })
 // color win calculations
-    if (global.colorBet.bet === colorResult) {
+    if (global.colorBet.bet === global.results.colorResult) {
         win = global.colorBet.amount*2;
         modalRef.winCalc.insertAdjacentHTML('afterbegin', `<p>Поздравляем, вы выиграли ${win} монет !!!</p>`);
         global.money += win;
@@ -32,4 +26,12 @@ export default function start() {
         'afterbegin', `<p>Попробуйте ещё раз, вам обязательно повезёт !</p>`
     )
     return;
+}
+function showNumber (result) {
+    console.log("showNumber")
+    const colorResult = ( result & 1 ) ? "red" : "black";
+    modalRef.result.innerHTML = `<p class="results-color" class=${colorResult}>${result}</p>`;
+} 
+function hideNumber () {
+    modalRef.result.innerHTML = ``;
 }

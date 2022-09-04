@@ -1,9 +1,10 @@
 import global from './globalData.js';
 import { numberBetCancel } from './numberBetCancel.js';
 import {colorBetCancel} from './colorBetCancel.js';
-import start from './process.js';
+import calcProcess from './process.js';
 import { walletRef, modalRef } from './refs.js';
 import { addBetListeners, removeBetListeners } from './betListeners.js';
+import {roulette} from "./roulette.js";
 
 function onWalletSubmit (evt) {
     evt.preventDefault();
@@ -75,27 +76,17 @@ const begin = (e) => {
     removeBetListeners();
     walletRef.start.classList.add("visually-hidden");
     modalRef.layout.classList.remove("visually-hidden");
-    modalRef.closeBtn.addEventListener('click', closeModal);
-    start ();
-    
-    // setTimeout(() => {
-    //     walletRef.betResult.innerHTML = "";
-    //     walletRef.betColorResult.innerHTML = "",
-    //     walletRef.money.textContent = `${global.money} `;
-    //     modalRef.layout.classList.add("visually-hidden");
-    //     modalRef.closeBtn.removeEventListener('click', closeModal);
-    //     modalRef.winCalc.innerHTML = "";
-    //     global.colorBet = {};
-    //     global.numberBet = [];
-    //     global.current = {};
-    //     addBetListeners();
-    //     return;
-    // }, 5000);
+    roulette();
+    setTimeout(() => {
+        modalRef.closeBtn.addEventListener('click', closeModal);
+        calcProcess ();
+    }, 8500);    
 }
+
 function closeModal () {
     walletRef.betResult.innerHTML = "";
     walletRef.betColorResult.innerHTML = "",
-    walletRef.money.textContent = `${global.money} `;
+    walletRef.money.textContent = `${global.money}`;
     modalRef.layout.classList.add("visually-hidden");
     modalRef.closeBtn.removeEventListener('click', closeModal);
     modalRef.winCalc.innerHTML = "";

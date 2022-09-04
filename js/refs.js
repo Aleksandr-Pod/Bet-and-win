@@ -24,6 +24,7 @@ export const walletRef = {
 export const modalRef = {
     layout: document.querySelector(".layout"),
     closeBtn: document.querySelector(".closeBtn"),
+    result: document.querySelector(".results"),
     numRes: document.querySelector(".results-number"),
     // corolText: document.querySelector(".color"),
     colorRes: document.querySelector(".results-color"),
