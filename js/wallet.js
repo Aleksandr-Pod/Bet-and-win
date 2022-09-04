@@ -17,6 +17,7 @@ function onWalletSubmit (evt) {
     walletRef.input.classList.add("visually-hidden");
     walletRef.inputText.textContent = `${global.current.amount} монет на ${global.current.bet}, подтвердите..`;    
     walletRef.wallet.removeEventListener('submit', onWalletSubmit);
+    walletRef.start.disabled = true;
     removeBetListeners();
     walletRef.confirmation.classList.remove("visually-hidden");
     walletRef.confirmation.addEventListener('click', betAmountConfirm);
@@ -28,6 +29,7 @@ function betAmountConfirm(evt) {
     if (evt.target.textContent !== "ок") {
         // set to initialState
         walletRef.confirmation.removeEventListener('click', betAmountConfirm);
+        walletRef.start.disabled = false;
         hideInput()
         global.current = {bet: "", amount: 0};
         console.log("Сброс текущей ставки..", global.current)
@@ -39,7 +41,7 @@ function betAmountConfirm(evt) {
     }
     global.money -= global.current.amount;
     walletRef.money.textContent = `${global.money}`;
-
+    walletRef.start.disabled = false;
     // start eventListenet only at first.
     if (!(global.colorBet.amount || global.numberBet[0]?.amount)) {
         console.log("start - add listener ..")
@@ -50,11 +52,11 @@ function betAmountConfirm(evt) {
     if (typeof(bet) === "string") {
         global.colorBet = {bet, amount};
         console.log("global.colorBet:", global.colorBet)
-        walletRef.betColorResult.innerHTML = `Ставка  принята: ${global.current.amount} монет
+        walletRef.betColorResult.innerHTML = `Ставка  принята: <b>${global.current.amount}</b> монет
         на цвет <span class="selectedBet ${bet}"></span>`;
     } else {
         global.numberBet.push({bet, amount});
-        walletRef.betResult.insertAdjacentHTML("afterbegin", `<li>Ставка  принята: ${global.current.amount} монет
+        walletRef.betResult.insertAdjacentHTML("afterbegin", `<li>Ставка  принята: <b>${global.current.amount}</b> монет
         на число <span class="results-number">${bet}</span></li>`);
     }
 
