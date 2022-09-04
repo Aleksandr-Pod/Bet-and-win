@@ -90,7 +90,7 @@ function closeModal () {
     modalRef.layout.classList.add("visually-hidden");
     modalRef.closeBtn.removeEventListener('click', closeModal);
     modalRef.winCalc.innerHTML = "";
-    modalRef.colorRes.classList.remove(`${global.results.colorResult}`);
+    modalRef.result.classList.remove("animation");
     global.colorBet = {};
     global.numberBet = [];
     global.current = {};

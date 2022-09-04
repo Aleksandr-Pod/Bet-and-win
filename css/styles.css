@@ -218,19 +218,18 @@ p {
   justify-content: space-around;
   padding: 5px;
 }
-/* .results-text {
-  font-size: 24px;
-}
-.results-number {
+/* .results-number {
   display: inline-block;
   width: 46px;
   background-color: wheat;
   border: 2px solid orange;
 } */
-.results-color {
-  padding: 0 5px;
+.result-number {
+  width: 60px;
+  padding: 5px;
   color: white;
   font-size: 48px;
+  text-align: center;
 }
 .start {
   padding: 5px 20px;
@@ -261,12 +260,6 @@ p {
   color: white;
   
 }
-/* .winAnimate {
-  animation-name: pulse;
-  animation-duration: 2s;
-  animation-timing-function: linear;
-  animation-iteration-count: initial;
-} */
 
 .animation {
   animation-name: pulse;

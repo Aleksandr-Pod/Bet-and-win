@@ -27,6 +27,6 @@ export const modalRef = {
     result: document.querySelector(".results"),
     numRes: document.querySelector(".results-number"),
     // corolText: document.querySelector(".color"),
-    colorRes: document.querySelector(".results-color"),
+    // colorRes: document.querySelector(".results-color"),
     winCalc: document.querySelector(".winCalc"),
 }

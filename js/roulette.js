@@ -6,7 +6,7 @@ export const roulette = async () => {
         await setTimeout(() => {
             const result = Math.floor(Math.random()*37);
             const colorResult = ( result & 1 ) ? "red" : "black";
-            modalRef.result.innerHTML = `<p class="results-color ${colorResult}">${result}</p>`;
+            modalRef.result.innerHTML = `<p class="result-number ${colorResult}">${result}</p>`;
             if (i === 10) {
                 global.results = {result, colorResult};
                 modalRef.result.classList.add("animation");
