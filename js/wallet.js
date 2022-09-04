@@ -25,7 +25,7 @@ function onWalletSubmit (evt) {
 function betAmountConfirm(evt) {
     evt.preventDefault();
     if (evt.target.nodeName !== "BUTTON") return;
-    if (evt.target.textContent !== "OK") {
+    if (evt.target.textContent !== "ок") {
         // set to initialState
         walletRef.confirmation.removeEventListener('click', betAmountConfirm);
         hideInput()
@@ -49,9 +49,9 @@ function betAmountConfirm(evt) {
     const {bet, amount} = global.current;
     if (typeof(bet) === "string") {
         global.colorBet = {bet, amount};
-        // console.log("global.colorBet:", global.colorBet)
+        console.log("global.colorBet:", global.colorBet)
         walletRef.betColorResult.innerHTML = `Ставка  принята: ${global.current.amount} монет
-        на цвет <span class="${bet}">${bet}</span>`;
+        на цвет <span class="selectedBet ${bet}"></span>`;
     } else {
         global.numberBet.push({bet, amount});
         walletRef.betResult.insertAdjacentHTML("afterbegin", `<li>Ставка  принята: ${global.current.amount} монет
@@ -73,21 +73,35 @@ const begin = (e) => {
     removeBetListeners();
     walletRef.start.classList.add("visually-hidden");
     modalRef.layout.classList.remove("visually-hidden");
-    
+    modalRef.closeBtn.addEventListener('click', closeModal);
     start ();
     
-    setTimeout(() => {
-        walletRef.betResult.innerHTML = "";
-        walletRef.betColorResult.innerHTML = "",
-        walletRef.money.textContent = `${global.money} `;
-        modalRef.layout.classList.add("visually-hidden");
-        modalRef.winCalc.innerHTML = "";
-        global.colorBet = {};
-        global.numberBet = [];
-        global.current = {};
-        addBetListeners();
-        return;
-    }, 5000);
+    // setTimeout(() => {
+    //     walletRef.betResult.innerHTML = "";
+    //     walletRef.betColorResult.innerHTML = "",
+    //     walletRef.money.textContent = `${global.money} `;
+    //     modalRef.layout.classList.add("visually-hidden");
+    //     modalRef.closeBtn.removeEventListener('click', closeModal);
+    //     modalRef.winCalc.innerHTML = "";
+    //     global.colorBet = {};
+    //     global.numberBet = [];
+    //     global.current = {};
+    //     addBetListeners();
+    //     return;
+    // }, 5000);
+}
+function closeModal () {
+    walletRef.betResult.innerHTML = "";
+    walletRef.betColorResult.innerHTML = "",
+    walletRef.money.textContent = `${global.money} `;
+    modalRef.layout.classList.add("visually-hidden");
+    modalRef.closeBtn.removeEventListener('click', closeModal);
+    modalRef.winCalc.innerHTML = "";
+    modalRef.colorRes.classList.remove(`${global.results.colorResult}`);
+    global.colorBet = {};
+    global.numberBet = [];
+    global.current = {};
+    addBetListeners();
 }
 
 const hideInput = () => {

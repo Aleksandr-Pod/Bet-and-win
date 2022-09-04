@@ -32,28 +32,30 @@ p {
 }
 .wallet-header {
   margin: 0;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   border-bottom: solid 1px black;
   font-size: 20px;
 }
 .money {
-  padding-left: 5px;
-  font-size: 20px;
+  padding: 5px 15px;
+  font-size: 24px;
   font-weight: 700;
-  color: rgb(212, 127, 0);
+  color: rgb(180, 20, 0);
+  border: 1px solid rgb(255, 115, 0);
+  border-radius: 24px;
 }
 .bet-result,
 .bet-colorResult {
-  margin:0 auto;
+  margin: 0 auto;
   padding: 3px 5px 1px;
   font-size: 20px;
-  color:rgb(212, 127, 0)
+  color:rgb(179, 21, 0)
 }
 
 .bet-message {
   font-size: 20px;
   background-color: indianred;
-  color: rgb(252, 235, 0);
+  color: rgb(119, 14, 0);
 }
 .wallet-input {
   text-align: center;
@@ -86,11 +88,15 @@ p {
 .confirmation {
   width: 120px;
   margin: 0 auto;
-  padding: 5px;
   display: flex;
   justify-content: space-between;
-}
 
+}
+.confirmation button{
+  margin-left: 20px;
+  padding: 1px 10px 5px 10px;
+  font-size: 20px;
+}
 
 .colorBetSection,
 .numberBetSection {
@@ -107,6 +113,10 @@ p {
   margin: 0 auto;
   padding: 10;
   width: 480px;
+}
+.selectedBet {
+  margin-left: 20px;;
+  padding: 0 20px;
 }
 .red {
   background-color: rgb(200, 0, 0);
@@ -182,10 +192,24 @@ p {
   position: fixed;
   width: 300px;
   height: 300px;
+  padding: 5px;
   top: 200px;
-  left: calc((100vw - 300px)/2);
+  left: calc((100% - 300px)/2);
   background-color: bisque;
   border-radius: 5px;
+}
+.closeBtn {
+  display: block;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  margin-left: auto;
+  margin-bottom: 10px;
+  font-size: 24px;
+  background-color: burlywood;
+  border: 1px solid orange;
+  border-radius: 16px;
+  cursor: pointer;
 }
 .results {
   display: flex;
@@ -197,7 +221,9 @@ p {
   font-size: 24px;
 }
 .results-number {
-  padding: 0 10px;
+  display: inline-block;
+  width: 46px;
+  /* padding: 0 10px; */
   background-color: wheat;
   border: 2px solid orange;
 }
@@ -214,7 +240,7 @@ p {
 .winCalc {
   width: 90%;
   margin: 0 auto;
- text-align: center;
+  text-align: center;
   background-color: yellow;
   border-color: orange;
   border-radius: 10px;

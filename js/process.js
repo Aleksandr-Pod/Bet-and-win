@@ -8,7 +8,7 @@ export default function start() {
     const colorResult = ( result & 1 ) ? "red" : "black";
     modalRef.colorRes.textContent = `${colorResult}`;
     modalRef.colorRes.classList.add(`${colorResult}`);
-
+    global.results = {result, colorResult};
     let win = 0;
 // numbers win calculations
     global.numberBet.forEach(el => {
