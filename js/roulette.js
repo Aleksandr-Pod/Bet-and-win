@@ -9,7 +9,7 @@ export const roulette = () => {
             modalRef.result.innerHTML = `<p class="result-number ${colorResult}">${result}</p>`;
             if (i === 15) {
                 global.results = {result, colorResult};
-                
+
             }
         }, i*i*40);
     };
