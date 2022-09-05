@@ -6,6 +6,7 @@ html {
 }
 
 body {
+  margin: 0;
   font-size: 20px;
   background-color: rgb(150, 106, 255);
 }
@@ -190,18 +191,8 @@ p {
 }
 
         /* MODAL */
-@media screen and (max-width: 768px){
-  .layout {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 768px;
-    height: 1024px;
-    background-color: rgb(0, 0, 0, 0.6);
-  }
-}
 .layout {
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
