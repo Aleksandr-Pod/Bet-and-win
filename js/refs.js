@@ -3,7 +3,7 @@ export const numberBetRef = {
     text: document.querySelector(".numberBet-text"),
 }
 export const colorBetRef = {
-    text: document.querySelector(".bet-text"),
+    text: document.querySelector(".colorBet-text"),
     fieldRed: document.querySelector(".red"),
     fieldBlack: document.querySelector(".black"),
     fieldCancel: document.querySelector(".cancel"),
@@ -14,6 +14,7 @@ export const walletRef = {
     betAmount: document.querySelector(".betAmount"),
     money: document.querySelector(".money"),
     input: document.querySelector("input"),
+    amountSubmit: document.querySelector(".amountSubmit"),
     confirmation: document.querySelector(".confirmation"),
     inputText: document.querySelector(".wallet-input-text"),
     betColorResult: document.querySelector(".bet-colorResult"),

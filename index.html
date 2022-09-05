@@ -8,27 +8,28 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <form class="wallet">
+    <div class="wallet">
       <p class="wallet-header">На вашем счету: <span class="money">100</span> монет</p>
       <p class="bet-colorResult"></p>
       <p class="bet-result"></p>
       <p class="bet-message"></p>
-      <div class="betAmount visually-hidden">
+      <form class="betAmount visually-hidden">
         <p class="wallet-input-text">Введите сумму ставки:</p>
-          <input type="text" class="wallet-input">
-        
-        <div class="confirmation visually-hidden">
-          <button class="bet-confirm">ок</button>
-          <button class="bet-cancel">отмена</button>
-        </div>
+        <input type="number" class="wallet-input">
+        <button type="submit" class="amountSubmit">Ввод</button>
+      </form>
+      <div class="confirmation visually-hidden">
+        <button type="text" class="bet-confirm">ок</button>
+        <button type="text" class="bet-cancel">отмена</button>
       </div>
-      <button type="button" class="start visually-hidden">START</button> 
-    </form>
+      <button type="text" class="start visually-hidden">START</button> 
+    </div>
+    
     <div class="colorBetSection">
-      <h2 class="bet-text">Делайте ставку !</h1>
+      <h2 class="colorBet-text">Делайте ставку !</h1>
       <div class="bet-color-field">
         <div class="red colorBet">Красный</div>
-        <div class="black colorBet" class="color">Чёрный</div>
+        <div class="black colorBet">Чёрный</div>
       </div>
       <div class="cancel colorBet">Отмена</div>
     </div>
@@ -36,6 +37,7 @@
       <h2 class="numberBet-text">Делайте ставку !</h2>
       <div class="numberBet-field"></div>
     </div>
+
     <div class="layout visually-hidden">
       <div class="modal">
         <div class="closeBtn">x</div>

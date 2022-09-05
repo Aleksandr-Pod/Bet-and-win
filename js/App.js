@@ -5,8 +5,6 @@ import {removeAccent} from './numberBetCancel.js';
 import {numberBetCancel} from './numberBetCancel.js';
 import {colorBetCancel} from './colorBetCancel.js';
 
-// global.colorBet = {bet: "", amount: 0};
-// global.numberBet = [];
 global.money = 100;
 
 colorBetRef.section.addEventListener('click', onColorBet);
