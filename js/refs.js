@@ -4,8 +4,8 @@ export const numberBetRef = {
 }
 export const colorBetRef = {
     text: document.querySelector(".colorBet-text"),
-    fieldRed: document.querySelector(".red"),
-    fieldBlack: document.querySelector(".black"),
+    red: document.querySelector(".red"),
+    black: document.querySelector(".black"),
     fieldCancel: document.querySelector(".cancel"),
     section: document.querySelector(".colorBetSection")
 }

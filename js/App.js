@@ -10,50 +10,41 @@ global.money = 100;
 colorBetRef.section.addEventListener('click', onColorBet);
 
 export function onColorBet(evt) {
-    const color = evt.target.className;
+    const [color] = evt.target.className.split(' ');
 
     if (global.colorBet.amount) changeColorBet();
-    switch (color) {
-        case "red colorBet":
-            betOnRed.call(colorBetRef, "red");
-            break;
-        case "black colorBet":
-            betOnBlack();
-            break;
-        default:
-            colorBetCancel();
-    } // Можно сделать одну функцию обработки ставки!
+
+    if  (color !== 'red' && color !== 'black') {
+        console.log('cancelling color bet')
+        colorBetCancel('red');
+        colorBetCancel('black');
+        return;
+    }
+    betOnColor(color);
 }
 function changeColorBet() {
-    console.log("global.colorBet", global.colorBet);
-    walletRef.betMessage.textContent = "Cставка на цвет ПОМЕНЯЕТСЯ !";
+    walletRef.betMessage.textContent = "Cтавка на цвет ПОМЕНЯЕТСЯ !";
 }
-
-function betOnRed (colorBetCancel) {
-    global.current.bet = "red";
-    this.text.textContent = "Ставка на красный";
-    this.text.style.backgroundColor = "yellow";
-    this.fieldRed.style.opacity = "100%";
-    this.fieldRed.classList.add("animation");
-    this.fieldBlack.style.opacity = "60%";
-    this.fieldBlack.classList.remove("animation");
-    numberBetRef.field.removeEventListener('click', onNumberBet);
-    makeBetAmount();
-    return;
-}
-
-function betOnBlack (colorBetCancel) {
-    global.current.bet = "black";
-    colorBetRef.text.textContent = "Ставка на чёрный";
+function betOnColor (color) {
+    global.current.bet = color;
     colorBetRef.text.style.backgroundColor = "yellow";
-    colorBetRef.fieldBlack.style.opacity = "100%";
-    colorBetRef.fieldBlack.classList.add("animation"); // название класса без точки !
-    colorBetRef.fieldRed.style.opacity = "60%";
-    colorBetRef.fieldRed.classList.remove("animation");
+    const colorText = color === "red" ? "красный" : "чёрный";
+    colorBetRef.text.textContent = `Ставка на ${colorText}`;
+    addAnimation(color);
+    removeAnimation(color === 'red' ? 'black' : 'red');
     numberBetRef.field.removeEventListener('click', onNumberBet);
     makeBetAmount();
     return;
 }
+function addAnimation(field) {
+    colorBetRef[field].style.opacity = "100%";
+    colorBetRef[field].classList.add("animation");
+}
+export function removeAnimation(field) {
+    colorBetRef[field].style.opacity = "60%";
+    colorBetRef[field].classList.remove("animation");
+}
+
 //        Генерируем поле цифр
 const numbers = [];
 for (let i = 1; i <= 37; i++) {

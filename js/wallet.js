@@ -117,7 +117,6 @@ export const makeBetAmount = () => {
     walletRef.betAmount.classList.remove("visually-hidden");
     walletRef.amountSubmit.classList.remove("visually-hidden");
     walletRef.betAmount.addEventListener('submit', onWalletSubmit);
-    // walletRef.amountSubmit.addEventListener('submit', onWalletSubmit);
     walletRef.input.focus();
 }
 
@@ -125,5 +124,4 @@ export const closeBetAmount = () => {
     walletRef.betAmount.classList.add("visually-hidden");
     walletRef.betAmount.removeEventListener('submit', onWalletSubmit);
     walletRef.confirmation.classList.add("visually-hidden");
-    // walletRef.amountSubmit.removeEventListener('submit', onWalletSubmit);
 }
