@@ -7,7 +7,6 @@ import { addBetListeners, removeBetListeners } from './betListeners.js';
 import {roulette} from "./roulette.js";
 
 function onWalletSubmit (evt) {
-    // evt.stopPropagation();
     evt.preventDefault();
     global.current.amount = parseInt(evt.currentTarget.elements[0].value);
 
@@ -24,7 +23,6 @@ function onWalletSubmit (evt) {
     walletRef.amountSubmit.classList.add("visually-hidden");
     walletRef.inputText.textContent = `${global.current.amount} монет на ${global.current.bet}:`;    
     walletRef.wallet.removeEventListener('submit', onWalletSubmit);
-    // walletRef.amountSubmit.removeEventListener('click', onWalletSubmit);
     walletRef.start.disabled = true;
     removeBetListeners();
     
@@ -66,7 +64,7 @@ function betAmountConfirm(evt) {
     } else {
         global.numberBet.push({bet, amount});
         walletRef.betResult.insertAdjacentHTML("afterbegin", `<li>Ставка  принята: <b>${global.current.amount}</b> монет
-        на число <span class="results-number">${bet}</span></li>`);
+        на число <span class="bet-result-number">${bet}</span></li>`);
     }
 
     hideInput();
