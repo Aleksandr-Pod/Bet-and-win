@@ -1,6 +1,6 @@
 import global from './globalData.js';
 import {colorBetRef, numberBetRef, walletRef} from './refs.js';
-import {makeBetAmount, closeBetAmount} from './wallet.js';
+import {makeBetAmount} from './wallet.js';
 import {removeAccent} from './numberBetCancel.js';
 import {numberBetCancel} from './numberBetCancel.js';
 import {colorBetCancel} from './colorBetCancel.js';
@@ -32,6 +32,8 @@ function betOnColor (color) {
     colorBetRef.text.textContent = `Ставка на ${colorText}`;
     addAnimation(color);
     removeAnimation(color === 'red' ? 'black' : 'red');
+
+    // выбрана ставка на цвет, пока отключим ставку на цифры
     numberBetRef.field.removeEventListener('click', onNumberBet);
     makeBetAmount();
     return;
@@ -67,7 +69,6 @@ export function onNumberBet(evt) {
     if (evt.target.nodeName !== "BUTTON") return;
     removeAccent();
     if (evt.target.classList.contains("n37")) {
-        closeBetAmount();
         numberBetCancel();
         return;
     } else {

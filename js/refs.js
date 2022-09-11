@@ -18,6 +18,7 @@ export const walletRef = {
     amountSubmit: document.querySelector(".amountSubmit"),
     confirmation: document.querySelector(".confirmation"),
     confirmText: document.querySelector(".confirmText"),
+    btnConfirm: document.querySelector(".bet-confirm"),
     betColorResult: document.querySelector(".bet-colorResult"),
     betResult: document.querySelector(".bet-result"),
     betMessage: document.querySelector(".bet-message"),
