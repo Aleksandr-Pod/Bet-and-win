@@ -112,12 +112,13 @@ p {
 .colorBet-text,
 .numberBet-text {
   text-align: center;
+  background-color: rgba(0, 255, 255, 0.3);
 }
         /* COLORS */
 .colorBetSection,
 .numberBetSection {
   width: 480px;
-  padding: 0 10px;
+  padding: 0 8px;
   margin: 0 auto;
   border: 2px solid black;
   border-radius: 5px;

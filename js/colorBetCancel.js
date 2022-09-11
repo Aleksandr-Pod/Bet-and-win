@@ -1,18 +1,18 @@
 import global from "./globalData.js";
-import { closeBetAmount } from "./wallet.js";
+import { removeBetAmountField } from "./wallet.js";
 import { colorBetRef, walletRef } from "./refs.js";
 import {addBetListeners} from "./betListeners.js";
 import { removeAnimation } from "./App.js";
 
-export const colorBetCancel = () => {
-    global.current.bet = null;
+export const colorBetCancel = (color) => {
     colorBetRef.text.textContent = "Делайте ставку !";
-    colorBetRef.text.style.backgroundColor = "inherit";
-    removeAnimation('red');
-    removeAnimation('black');
+    colorBetRef.text.style.backgroundColor = "rgba(0, 255, 255, 0.3)";
+    removeAnimation(color);
+    // removeAnimation(color);
     addBetListeners();
     walletRef.betMessage.textContent = "";
-    closeBetAmount();
+    removeBetAmountField();
+    global.current = {};
     return;
 }
 // function removeAnimation () {

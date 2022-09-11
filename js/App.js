@@ -12,17 +12,17 @@ colorBetRef.section.addEventListener('click', onColorBet);
 export function onColorBet(evt) {
     const [color] = evt.target.className.split(' ');
 
-    if (global.colorBet.amount) changeColorBet();
+    if (global.colorBet.amount) warningColorBetChange();
 
     if  (color !== 'red' && color !== 'black') {
-        console.log('cancelling color bet')
-        colorBetCancel('red');
-        colorBetCancel('black');
+        console.log('cancelling color bet');
+        if (colorBetRef.red.classList.value.includes('animation')) colorBetCancel('red');
+        if (colorBetRef.black.classList.value.includes('animation')) colorBetCancel('black');
         return;
     }
     betOnColor(color);
 }
-function changeColorBet() {
+function warningColorBetChange() {
     walletRef.betMessage.textContent = "Cтавка на цвет ПОМЕНЯЕТСЯ !";
 }
 function betOnColor (color) {
