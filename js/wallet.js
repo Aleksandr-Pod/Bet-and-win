@@ -86,7 +86,7 @@ const begin = (e) => {
         modalRef.closeBtn.addEventListener('click', closeModal);
         modalRef.result.classList.add("animation");
         calcProcess ();
-    }, 9500);    
+    }, 5000);    
 }
 
 function closeModal () {

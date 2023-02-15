@@ -8,7 +8,6 @@ export const colorBetCancel = (color) => {
     colorBetRef.text.textContent = "Делайте ставку !";
     colorBetRef.text.style.backgroundColor = "rgba(0, 255, 255, 0.3)";
     removeAnimation(color);
-    // removeAnimation(color);
     addBetListeners();
     walletRef.betMessage.textContent = "";
     removeBetAmountField();

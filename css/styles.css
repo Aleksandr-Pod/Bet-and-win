@@ -267,6 +267,12 @@ p {
   font-size: 48px;
   color: white;
 }
+.elfsight-app-5c676a02-454e-4b04-895b-2720e9b757e7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 
 .animation {
   animation-name: pulse;
