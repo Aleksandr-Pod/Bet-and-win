@@ -16,9 +16,9 @@ export default function calcProcess() {
 // numbers win calculations
     global.numberBet.forEach(el => {
         if (el.bet === global.results.result) {
-            win =  el.amount*10;
+            win =  el.amount*20;
             setTimeout(() => {
-                modalRef.winCalc.insertAdjacentHTML=('afterbegin', `<p>Поздравляем, вы выиграли ${win} монет !!!</p>`);
+                modalRef.winCalc.insertAdjacentHTML=('afterbegin', `<p>Ух ты как круто, вы выиграли ${win} монет !!!</p>`);
             }, 1000)
             global.money += win;
                 // красиво отрисовать прибавление денег
